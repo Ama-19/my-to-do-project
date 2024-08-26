@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, TimeField, SubmitField, IntegerField
+from wtforms import StringField, TextAreaField, TimeField, SubmitField, IntegerField, SelectField
 from wtforms.validators import DataRequired
 
 class RoutineForm(FlaskForm):
@@ -11,6 +11,7 @@ class RoutineForm(FlaskForm):
 
 class TaskForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
-    description = TextAreaField('Description')
-    priority = IntegerField('Priority', validators=[DataRequired()])
+    description = TextAreaField('Description', validators=[DataRequired()])
+    priority = SelectField('Priority', choices=[('High', 'High'), ('Medium', 'Medium'), ('Low', 'Low')], validators=[DataRequired()])
     submit = SubmitField('Save')
+
